@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>YOUR NAME | Video Editor</title>
+
+<style>
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #0b0b0b;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   COMMON BOX
+========================================= */
+
+.box {
+    width: 92%;
+    max-width: 1400px;
+    margin: 70px auto;
+    background: #151515;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.section-content {
+    padding: 55px;
+}
+
+.title {
+    font-size: clamp(38px, 5vw, 75px);
+    line-height: 0.9;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.title span {
+    color: #e95c5c;
+}
+
+
+/* =========================================
+   BOX 1
+   BEFORE / AFTER
+========================================= */
+
+.before-after-box {
+    height: 650px;
+    position: relative;
+    padding: 0;
+}
+
+.before-after {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    cursor: ew-resize;
+    user-select: none;
+}
+
+.before-after img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.after-image {
+    clip-path: inset(0 0 0 50%);
+}
+
+.slider-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    background: #ffffff;
+    transform: translateX(-50%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.slider-button {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #111111;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 6;
+    font-size: 23px;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+
+/* =========================================
+   BOX 2
+   ABOUT ME
+========================================= */
+
+.about-box {
+    padding: 55px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 65px;
+    align-items: center;
+}
+
+.profile-photo {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.small-heading {
+    color: #e95c5c;
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+
+.name {
+    font-size: clamp(48px, 6vw, 90px);
+    line-height: 0.88;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+.role {
+    color: #e95c5c;
+    font-size: 24px;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+.description {
+    color: #999;
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 650px;
+}
+
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 55px;
+    margin-top: 45px;
+}
+
+.stat h3 {
+    font-size: 38px;
+}
+
+.stat p {
+    color: #666;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-top: 6px;
+}
+
+
+/* =========================================
+   BOX 3
+   GREEN SCREEN VIDEO
+========================================= */
+
+.green-box {
+    background: #171717;
+}
+
+.green-header {
+    padding: 55px;
+}
+
+.green-video {
+    width: 100%;
+    background: #000000;
+}
+
+.green-video video {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 760px;
+    object-fit: contain;
+}
+
+
+/* =========================================
+   BOX 4
+   WIDE SCREEN VIDEO
+========================================= */
+
+.wide-box {
+    background: #101010;
+}
+
+.wide-header {
+    padding: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.wide-header .title {
+    max-width: 900px;
+}
+
+.wide-video {
+    width: 100%;
+    background: #000000;
+    padding: 20px;
+}
+
+.wide-video video {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: contain;
+}
+
+
+/* =========================================
+   BOX 5
+   PODCAST TRAILER
+   SAME THEME AS MOTION GRAPHICS
+========================================= */
+
+.motion-style-box {
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            #292929 0%,
+            #151515 45%,
+            #0c0c0c 100%
+        );
+    position: relative;
+}
+
+.motion-style-header {
+    padding: 55px;
+    text-align: center;
+}
+
+.motion-style-header .title {
+    font-size: clamp(40px, 6vw, 90px);
+}
+
+.motion-video {
+    width: 100%;
+    padding: 0 55px 55px;
+}
+
+.motion-video video {
+    display: block;
+    width: 100%;
+    max-height: 760px;
+    object-fit: contain;
+    background: #000000;
+    border-radius: 8px;
+}
+
+
+/* =========================================
+   BOX 6
+   CLIENT WORK
+========================================= */
+
+.client-box {
+    background: #161616;
+}
+
+.client-header {
+    padding: 55px;
+}
+
+.client-video {
+    width: 100%;
+    background: #000000;
+}
+
+.client-video video {
+    display: block;
+    width: 100%;
+    max-height: 760px;
+    object-fit: contain;
+}
+
+
+/* =========================================
+   BOX 7 & 8
+   MOTION GRAPHICS
+========================================= */
+
+.motion-box {
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            #292929 0%,
+            #151515 45%,
+            #0c0c0c 100%
+        );
+}
+
+.motion-header {
+    padding: 55px;
+    text-align: center;
+}
+
+.motion-header .title {
+    font-size: clamp(40px, 6vw, 90px);
+}
+
+.motion-video-area {
+    padding: 0 55px 55px;
+}
+
+.motion-video-area video {
+    display: block;
+    width: 100%;
+    max-height: 760px;
+    object-fit: contain;
+    background: #000000;
+    border-radius: 8px;
+}
+
+
+/* =========================================
+   BOX 9
+   THANK YOU
+========================================= */
+
+.contact-box {
+    min-height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #292929 0%,
+            #151515 45%,
+            #0b0b0b 100%
+        );
+}
+
+.thank-you {
+    font-size: clamp(65px, 11vw, 150px);
+    line-height: 0.8;
+    text-transform: uppercase;
+}
+
+.thank-you span {
+    color: #e95c5c;
+}
+
+.contact-name {
+    margin-top: 50px;
+    font-size: 32px;
+    text-transform: uppercase;
+}
+
+.contact-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px 40px;
+    margin-top: 30px;
+}
+
+.contact-details a {
+    color: #999;
+    text-decoration: none;
+    font-size: 17px;
+    transition: 0.3s;
+}
+
+.contact-details a:hover {
+    color: #e95c5c;
+}
+
+.footer {
+    margin-top: 70px;
+    color: #555;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   SCROLL ANIMATION
+========================================= */
+
+.fade {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: all 0.9s ease;
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 800px) {
+
+    .box {
+        width: 94%;
+        margin: 35px auto;
+        border-radius: 8px;
+    }
+
+    .section-content,
+    .green-header,
+    .wide-header,
+    .client-header,
+    .motion-header {
+        padding: 30px;
+    }
+
+    .before-after-box {
+        height: 430px;
+    }
+
+    .about-box {
+        padding: 30px;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .profile-photo {
+        height: 430px;
+    }
+
+    .stats {
+        gap: 30px;
+    }
+
+    .wide-header {
+        display: block;
+    }
+
+    .motion-video,
+    .motion-video-area {
+        padding: 0 30px 30px;
+    }
+
+    .contact-box {
+        min-height: 500px;
+        padding: 30px;
+    }
+
+    .contact-name {
+        font-size: 25px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     BOX 1
+     BEFORE / AFTER
+=================================================== -->
+
+<section class="box before-after-box fade">
+
+    <div class="before-after" id="beforeAfter">
+
+        <img
+            src="assets/before.jpg"
+            alt="Before"
+        >
+
+        <img
+            src="assets/after.jpg"
+            alt="After"
+            class="after-image"
+            id="afterImage"
+        >
+
+        <div
+            class="slider-line"
+            id="sliderLine">
+        </div>
+
+        <div
+            class="slider-button"
+            id="sliderButton">
+            ↔
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     BOX 2
+     ABOUT ME
+=================================================== -->
+
+<section class="box about-box fade">
+
+    <div class="about-grid">
+
+        <div>
+
+            <img
+                src="assets/profile.jpg"
+                alt="Profile"
+                class="profile-photo"
+            >
+
+        </div>
+
+
+        <div>
+
+            <div class="small-heading">
+                Hi, I am
+            </div>
+
+            <!-- CHANGE NAME -->
+
+            <h1 class="name">
+                YOUR NAME
+            </h1>
+
+            <div class="role">
+                VIDEO EDITOR
+            </div>
+
+            <p class="description">
+
+                I am a passionate Video Editor focused on
+                creating engaging and visually strong content.
+                I work with video editing, storytelling,
+                podcast trailers, green screen editing,
+                wide screen videos and motion graphics.
+
+            </p>
+
+
+            <div class="stats">
+
+                <div class="stat">
+                    <h3>1.5+</h3>
+                    <p>YEARS EXPERIENCE</p>
+                </div>
+
+                <div class="stat">
+                    <h3>100+</h3>
+                    <p>VIDEOS EDITED</p>
+                </div>
+
+                <div class="stat">
+                    <h3>10+</h3>
+                    <p>PROJECTS</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     BOX 3
+     GREEN SCREEN VIDEO
+=================================================== -->
+
+<section class="box green-box fade">
+
+    <div class="green-header">
+
+        <h2 class="title">
+            GREEN SCREEN <span>VIDEO</span>
+        </h2>
+
+    </div>
+
+
+    <div class="green-video">
+
+        <video
+            controls
+            playsinline
+            preload="metadata">
+
+            <source
+                src="assets/green-screen.mp4"
+                type="video/mp4">
+
+        </video>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     BOX 4
+     WIDE SCREEN VIDEO
+=================================================== -->
+
+<section class="box wide-box fade">
+
+    <div class="wide-header">
+
+        <h2 class="title">
+            WIDE SCREEN <span>VIDEO</span>
+        </h2>
+
+    </div>
+
+
+    <div class="wide-video">
+
+        <video
+            controls
+            playsinline
+            preload="metadata">
+
+            <source
+                src="assets/wide-screen.mp4"
+                type="video/mp4">
+
+        </video>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     BOX 5
+     PODCAST TRAILER VIDEO
+     SAME MOTION GRAPHICS STYLE
+=================================================== -->
+
+<section class="box motion-style-box fade">
+
+    <div class="motion-style-header">
+
+        <h2 class="title">
+            PODCAST TRAILER <span>VIDEO</span>
+        </h2>
+
+    </div>
+
+
+    <div class="motion-video">
+
+        <video
+            controls
+            playsinline
+            preload="metadata">
+
+            <source
+                src="assets/podcast-trailer.mp4"
+                type="video/mp4">
+
+        </video>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     BOX 6
+     CLIENT WORK
+=================================================== -->
+
+<section class="box client-box fade">
+
+    <div class="client-header">
+
+        <h2 class="title">
+            CLIENT <span>WORK</span>
+        </h2>
+
+    </div>
+
+
+    <div class="client-video">
+
+        <video
+            controls
+            playsinline
+            preload="metadata">
+
+            <source
+                src="assets/client-work.mp4"
+                type="video/mp4">
+
+        </video>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     BOX 7
+     MOTION GRAPHICS VIDEO
+=================================================== -->
+
+<section class="box motion-box fade">
+
+    <div class="motion-header">
+
+        <h2 class="title">
+            MOTION GRAPHICS <span>VIDEO</span>
+        </h2>
+
+    </div>
+
+
+    <div class="motion-video-area">
+
+        <video
+            controls
+            playsinline
+            preload="metadata">
+
+            <source
+                src="assets/motion-graphics-1.mp4"
+                type="video/mp4">
+
+        </video>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     BOX 8
+     MOTION GRAPHICS VIDEO
+=================================================== -->
+
+<section class="box motion-box fade">
+
+    <div class="motion-header">
+
+        <h2 class="title">
+            MOTION GRAPHICS <span>VIDEO</span>
+        </h2>
+
+    </div>
+
+
+    <div class="motion-video-area">
+
+        <video
+            controls
+            playsinline
+            preload="metadata">
+
+            <source
+                src="assets/motion-graphics-2.mp4"
+                type="video/mp4">
+
+        </video>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     BOX 9
+     THANK YOU + CONTACT
+=================================================== -->
+
+<section class="box contact-box fade">
+
+    <h2 class="thank-you">
+        THANK <span>YOU</span>
+    </h2>
+
+
+    <!-- CHANGE YOUR NAME -->
+
+    <div class="contact-name">
+        YOUR NAME
+    </div>
+
+
+    <div class="contact-details">
+
+        <!-- CHANGE PHONE -->
+
+        <a href="tel:+910000000000">
+            +91 00000 00000
+        </a>
+
+
+        <!-- CHANGE EMAIL -->
+
+        <a href="mailto:yourmail@gmail.com">
+            yourmail@gmail.com
+        </a>
+
+
+        <!-- CHANGE INSTAGRAM -->
+
+        <a
+            href="https://instagram.com/"
+            target="_blank">
+
+            Instagram
+
+        </a>
+
+    </div>
+
+
+    <div class="footer">
+        VIDEO EDITOR • AVAILABLE FOR WORK
+    </div>
+
+</section>
+
+
+
+<script>
+
+/* ==================================================
+   BEFORE / AFTER DRAG SLIDER
+=================================================== */
+
+const beforeAfter =
+    document.getElementById("beforeAfter");
+
+const afterImage =
+    document.getElementById("afterImage");
+
+const sliderLine =
+    document.getElementById("sliderLine");
+
+const sliderButton =
+    document.getElementById("sliderButton");
+
+let dragging = false;
+
+
+function moveSlider(x) {
+
+    const rect =
+        beforeAfter.getBoundingClientRect();
+
+    let position =
+        ((x - rect.left) / rect.width) * 100;
+
+    position =
+        Math.max(
+            0,
+            Math.min(100, position)
+        );
+
+
+    afterImage.style.clipPath =
+        `inset(0 0 0 ${position}%)`;
+
+
+    sliderLine.style.left =
+        position + "%";
+
+
+    sliderButton.style.left =
+        position + "%";
+}
+
+
+/* Mouse */
+
+beforeAfter.addEventListener(
+    "mousedown",
+    function() {
+        dragging = true;
+    }
+);
+
+
+window.addEventListener(
+    "mouseup",
+    function() {
+        dragging = false;
+    }
+);
+
+
+window.addEventListener(
+    "mousemove",
+    function(e) {
+
+        if (!dragging) return;
+
+        moveSlider(e.clientX);
+
+    }
+);
+
+
+/* Touch */
+
+beforeAfter.addEventListener(
+    "touchstart",
+    function() {
+        dragging = true;
+    },
+    { passive: true }
+);
+
+
+window.addEventListener(
+    "touchend",
+    function() {
+        dragging = false;
+    }
+);
+
+
+window.addEventListener(
+    "touchmove",
+    function(e) {
+
+        if (!dragging) return;
+
+        moveSlider(
+            e.touches[0].clientX
+        );
+
+    },
+    { passive: true }
+);
+
+
+
+/* ==================================================
+   SCROLL ANIMATION
+=================================================== */
+
+const fadeElements =
+    document.querySelectorAll(".fade");
+
+
+const observer =
+    new IntersectionObserver(
+        function(entries) {
+
+            entries.forEach(
+                function(entry) {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target.classList.add(
+                            "show"
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+fadeElements.forEach(
+    function(element) {
+
+        observer.observe(element);
+
+    }
+);
+
+</script>
+
+</body>
+</html>
